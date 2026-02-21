@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c58bs7gmjtx8j" path="res://Scripts/game.gd" id="1_80nbo"]
 
-[node name="Game" type="Control"]
+[node name="GameRoot" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,12 +11,149 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_80nbo")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
+[node name="Game" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control (TopSpacer)" type="Control" parent="Game"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TurnBanner" type="CenterContainer" parent="Game"]
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="Game/TurnBanner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.5058824, 1)
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="MainRow" type="HBoxContainer" parent="Game"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Player1Panel" type="VBoxContainer" parent="Game/MainRow"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="BannerList" type="VBoxContainer" parent="Game/MainRow/Player1Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Game/MainRow/Player1Panel"]
+layout_mode = 2
+text = "Player 1"
+horizontal_alignment = 1
+
+[node name="Control (spacer)" type="Control" parent="Game/MainRow/Player1Panel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="Game/MainRow/Player1Panel"]
+layout_mode = 2
+
+[node name="CenterPanel" type="VBoxContainer" parent="Game/MainRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/MainRow/CenterPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Game/MainRow/CenterPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="Game/MainRow/CenterPanel/VBoxContainer/CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+columns = 6
+
+[node name="CompanionsBar" type="HBoxContainer" parent="Game/MainRow/CenterPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Player2Panel" type="VBoxContainer" parent="Game/MainRow"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="BannerList" type="VBoxContainer" parent="Game/MainRow/Player2Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Game/MainRow/Player2Panel"]
+layout_mode = 2
+text = "Player 2"
+
+[node name="HouseCompletedDialog" type="AcceptDialog" parent="Game"]
+
+[node name="CompanionConfirmDialog" type="ConfirmationDialog" parent="Game"]
+
+[node name="JonSnowDialog" type="AcceptDialog" parent="Game"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/JonSnowDialog"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(600, 600)
+[node name="HousesList" type="VBoxContainer" parent="Game/JonSnowDialog/VBoxContainer"]
 layout_mode = 2
-columns = 6
+
+[node name="KillConfirmDialog" type="ConfirmationDialog" parent="Game"]
+
+[node name="Control (BottomSpacer)" type="Control" parent="Game"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameOverPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultPanel" type="Panel" parent="GameOverPanel/CenterContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel/CenterContainer/ResultPanel"]
+layout_mode = 0
+offset_left = -300.0
+offset_top = -73.0
+offset_right = 300.0
+offset_bottom = 73.0
+theme_override_constants/separation = 20
+
+[node name="GameOverLabel" type="Label" parent="GameOverPanel/CenterContainer/ResultPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="WinnerLabel" type="Label" parent="GameOverPanel/CenterContainer/ResultPanel/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="RestartButton" type="Button" parent="GameOverPanel/CenterContainer/ResultPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Restart Game"

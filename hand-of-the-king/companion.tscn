@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://qjmjx407lbn1"]
+
+[ext_resource type="Script" uid="uid://1bjruaj01wnd" path="res://Scripts/companion.gd" id="1_dwm71"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwm71"]
+bg_color = Color(0.8980392, 0.40392157, 0.09019608, 1)
+corner_detail = 1
+
+[node name="Companion" type="Control"]
+custom_minimum_size = Vector2(140, 220)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+script = ExtResource("1_dwm71")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwm71")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Abillity" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
